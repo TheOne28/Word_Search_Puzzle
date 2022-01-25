@@ -146,7 +146,7 @@ void checkVertikal(vector<vector<char>>board, vector<word>allw, int col, int row
                     if(same){
                         allw[k].done = true;
                         cout << allw[k].cntnt << endl;
-                        printVertikal(i, j, lnt, row, col, board);
+                        printVertikal(j, i, lnt, row, col, board);
                     }
                 }
                 ind = 0;
@@ -163,7 +163,7 @@ void checkVertikal(vector<vector<char>>board, vector<word>allw, int col, int row
                     if(same) {
                         allw[k].done = true;
                         cout << allw[k].cntnt << endl;
-                        printVertikal(i, j, lnt, row, col, board);
+                        printVertikal(j, i, lnt, row, col, board);
                     }
                 }
             }
