@@ -9,10 +9,11 @@ void checkHorizontal(){
                 if(lnt > column - j){
                     break;
                 }
-
+                step += 2;
                 if(problem[k].content[ind] == board[i][j] && !problem[k].done){
                     bool same = true;
                     for(int l = j + 1; l < j + problem[k].length; l ++){
+                        step ++;
                         ind ++;
                         if(problem[k].content[ind] != board[i][l]){
                             same = false;
@@ -30,6 +31,7 @@ void checkHorizontal(){
                 if(problem[k].content[lnt - ind - 1] == board[i][j] && !problem[k].done){
                     bool same = true;
                     for(int l = j + 1; l < j + problem[k].length; l ++){
+                        step ++;
                         ind ++;
                         if(problem[k].content[lnt - ind - 1] != board[i][l]){
                             same = false;
@@ -57,10 +59,11 @@ void checkVertikal(){
                 if(lnt > row - j){
                     break;
                 }
-
+                step += 2;
                 if(problem[k].content[ind] == board[j][i] && !problem[k].done){
                     bool same = true;
                     for(int l = j + 1; l < j + problem[k].length; l ++){
+                        step ++;
                         ind ++;
                         if(problem[k].content[ind] != board[l][i]){
                             same = false;
@@ -77,7 +80,8 @@ void checkVertikal(){
                 ind = 0;
                 if(problem[k].content[lnt - ind - 1] == board[j][i] && !problem[k].done){
                     bool same = true;
-                    for(int l = j + 1; l < j + problem[k].length; l ++){
+                    for(int l = j + 1; l < j + lnt; l ++){
+                        step ++;
                         ind ++;
                         if(problem[k].content[lnt - ind - 1] != board[l][i]){
                             same = false;
@@ -103,10 +107,12 @@ void checkDiagonalL(){
                 int ind = 0;
                 int lnt = problem[k].length;
                 
+                step += 2;
                 if(problem[k].content[ind] == board[i][j] && !problem[k].done){
                     bool same = true;
                     for(int l = i + 1, z = j + 1; l < row && z < column;){
                         ind ++;
+                        step ++;
                         if(problem[k].content[ind] != board[l][z]){
                             same = false;
                             break;
@@ -121,7 +127,7 @@ void checkDiagonalL(){
                     if(same){
                         problem[k].done = true;
                         cout << problem[k].content << endl;
-                        printDiagonalL(i, j);
+                        printDiagonalL(i, j, lnt);
                     }
                 }
                 ind  = 0;
@@ -129,6 +135,7 @@ void checkDiagonalL(){
                     bool same = true;
                     for(int l = i + 1, z = j + 1; l < row && z < column;){
                         ind ++;
+                        step ++;
                         if(problem[k].content[lnt-ind-1] != board[l][z]){
                             same = false;
                             break;
@@ -143,7 +150,7 @@ void checkDiagonalL(){
                     if(same){
                         problem[k].done = true;
                         cout << problem[k].content << endl;
-                        printDiagonalL(i, j);
+                        printDiagonalL(i, j, lnt);
                     }
                 }
             }
@@ -158,12 +165,18 @@ void checkDiagonalR(){
                 int ind = 0;
                 int lnt = problem[k].length;
                 
+                step += 2;
                 if(problem[k].content[ind] == board[i][j] && !problem[k].done){
                     bool same = true;
                     for(int l = i + 1, z = j - 1; l < row && z >= 0;){
                         ind ++;
+                        step ++;
                         if(problem[k].content[ind] != board[l][z]){
                             same = false;
+                            break;
+                        }
+
+                        if(ind == lnt-1){
                             break;
                         }
                         l  ++;
@@ -176,16 +189,21 @@ void checkDiagonalR(){
                     if(same){
                         problem[k].done = true;
                         cout << problem[k].content << endl;
-                        printDiagonalR(i, j);
+                        printDiagonalR(i, j, lnt);
                     }
                 }
                 ind  = 0;
                 if(problem[k].content[lnt-ind-1] == board[i][j] && !problem[k].done){
                     bool same = true;
+                    step ++;
                     for(int l = i + 1, z = j - 1; l < row && z >= 0;){
                         ind ++;
                         if(problem[k].content[lnt-ind-1] != board[l][z]){
                             same = false;
+                            break;
+                        }
+
+                        if(ind == lnt-1){
                             break;
                         }
                         l ++;
@@ -199,7 +217,7 @@ void checkDiagonalR(){
                     if(same){
                         problem[k].done = true;
                         cout << problem[k].content << endl;
-                        printDiagonalR(i, j);
+                        printDiagonalR(i, j, lnt);
                     }
                 }
             }

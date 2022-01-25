@@ -40,6 +40,7 @@ void inputText(){
 }
 
 void printHorizontal(int solrow, int solcolumn, int length){
+    wordfound ++;
     for(int i = 0; i < row; i ++){
         for(int j = 0; j < column; j ++){
             if(i == solrow && j >= solcolumn && j < solcolumn + length){
@@ -56,6 +57,7 @@ void printHorizontal(int solrow, int solcolumn, int length){
 }
 
 void printVertikal(int solrow, int solcolumn, int length){
+    wordfound ++;
     for(int i = 0; i < row; i ++){
         for(int j = 0; j < column; j ++){
             if(j == solcolumn && i >= solrow && i < solrow + length ){
@@ -69,13 +71,15 @@ void printVertikal(int solrow, int solcolumn, int length){
     cout << endl;
 }
 
-void printDiagonalL(int solrow, int solcolumn){
+void printDiagonalL(int solrow, int solcolumn, int length){
+    wordfound ++;
     for(int i = 0; i < row; i ++){
         for(int j = 0; j < column; j ++){
-            if(i == solrow && j == solcolumn){
+            if(i == solrow && j == solcolumn && length > 0){
                 cout << board[i][j];
                 solcolumn ++;
                 solrow ++;
+                length --;
             }else{
                 cout << "-";
             }
@@ -85,13 +89,15 @@ void printDiagonalL(int solrow, int solcolumn){
     cout << endl;
 }
 
-void printDiagonalR(int solrow, int solcolumn){
+void printDiagonalR(int solrow, int solcolumn, int length){
+    wordfound ++;
     for(int i = 0; i < row; i ++){
         for(int j = 0; j < column; j ++){
-            if(i == solrow && j == solcolumn){
+            if(i == solrow && j == solcolumn && length > 0){
                 cout << board[i][j];
                 solcolumn --;
                 solrow ++;
+                length --;
             }else{
                 cout << "-";
             }
