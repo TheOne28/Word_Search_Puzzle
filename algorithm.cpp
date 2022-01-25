@@ -38,13 +38,25 @@ void printVertikal(int row, int col, int length, int sizer, int sizecol, vector<
     cout << endl;
 }
 
-void printDiagonal(char* board, vector<pair<string,int>>word){
-
-}
 /*
     a b c d 4  
 */
 
+void printDiagonal(int row, int col, int sizer, int sizecol, vector<vector<char>>board){
+    for(int i = 0; i < sizer; i ++){
+        for(int j = 0; j < sizecol; j ++){
+            if(i == row && j == col){
+                cout << board[i][j];
+                col ++;
+                row ++;
+            }else{
+                cout << "-";
+            }
+            cout << " \n"[j == sizecol - 1];
+        }
+    }
+    cout << endl;
+}
 
 void checkHorizontal(vector<vector<char>>board, vector<word>allw, int col, int row, int lword){
     for(int i = 0; i < row; i ++){
@@ -142,6 +154,35 @@ void checkVertikal(vector<vector<char>>board, vector<word>allw, int col, int row
     }    
 }
 
+void checkDiagonal(vector<vector<char>>board, vector<word>allw, int col, int row, int lword){
+    for(int i = 0; i < row; i ++){
+        for(int j = 0; j < col; j ++){
+            for(int k = 0; k < lword; k ++){
+                int ind = 0;
+                int lnt = allw[k].length;
+                
+                if(allw[k].cntnt[ind] == board[i][j] && !allw[k].done){
+                    bool same = true;
+                    for(int l = i + 1, z = j + 1; l < row && z < col;){
+                        ind ++;
+                        if(allw[k].cntnt[ind] != board[l][z]){
+                            same = false;
+                            break;
+                        }
+                        l ++;
+                        z ++;
+                    }
+
+                    if(same){
+                        allw[k].done = true;
+                        cout << allw[k].cntnt << endl;
+                        printDiagonal(i, j, row, col, board );
+                    }
+                }
+            }
+        }
+    }
+}
 
 int main(){
     int n, m, k;
@@ -174,8 +215,8 @@ int main(){
     
     checkHorizontal(board, allw, m, n, allw.size());
     checkVertikal(board, allw, m, n, allw.size());
-
-
+    checkDiagonal(board, allw, m, n, allw.size());
+    return 0;
 
 }   
 
