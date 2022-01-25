@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <string>
 #include <vector>
+#include <chrono>
 using namespace std;
 
 //Struct for each word
