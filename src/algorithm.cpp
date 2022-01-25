@@ -117,6 +117,9 @@ void checkDiagonalL(){
                             same = false;
                             break;
                         }
+                        if(ind == lnt-1){
+                            break;
+                        }
                         l ++;
                         z ++;
                     }
@@ -138,6 +141,9 @@ void checkDiagonalL(){
                         step ++;
                         if(problem[k].content[lnt-ind-1] != board[l][z]){
                             same = false;
+                            break;
+                        }
+                        if(ind == lnt-1){
                             break;
                         }
                         l ++;
