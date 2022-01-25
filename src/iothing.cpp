@@ -15,7 +15,7 @@ vector<char> splitstring(string baris){
 }
 
 void inputText(){
-    freopen("../input.txt", "r", stdin);
+    freopen("../test/input.txt", "r", stdin);
     
     string baris;
 
