@@ -15,13 +15,17 @@ struct word{
 };
 
 // Some global variable used
-vector<vector<char>>board;
-vector<word>problem;
+extern vector<vector<char>>board;
+extern vector<word>problem;
 
-int row, column, probnumb;
+extern int row, column, probnumb;
 
 
 //Function declaration
+
+//Function for input and processing input
+void inputText();
+
 //Function for checking board;
 
 void checkHorizontal(vector<vector<char>>board, vector<word>allw, int col, int row, int lword);
