@@ -24,8 +24,18 @@ void printHorizontal(int row, int col, int length, int sizer, int sizecol, vecto
     cout << endl;
 }
 
-void printVertikal(){
-
+void printVertikal(int row, int col, int length, int sizer, int sizecol, vector<vector<char>>board){
+    for(int i = 0; i < sizer; i ++){
+        for(int j = 0; j < sizecol; j ++){
+            if(j == col && i >= row && i < row + length ){
+                cout << board[i][j];
+            }else{
+                cout << "-";
+            }
+            cout << " \n"[j == sizecol - 1];
+        }
+    }
+    cout << endl;
 }
 
 void printDiagonal(char* board, vector<pair<string,int>>word){
@@ -61,7 +71,9 @@ void checkHorizontal(vector<vector<char>>board, vector<word>allw, int col, int r
                         cout << allw[k].cntnt << endl;
                         printHorizontal(i, j, lnt, row, col, board);
                     }
-                }else if(allw[k].cntnt[lnt - ind - 1] == board[i][j] && !allw[k].done){
+                }
+                ind = 0;
+                if(allw[k].cntnt[lnt - ind - 1] == board[i][j] && !allw[k].done){
                     bool same = true;
                     for(int l = j + 1; l < j + allw[k].length; l ++){
                         ind ++;
@@ -82,7 +94,53 @@ void checkHorizontal(vector<vector<char>>board, vector<word>allw, int col, int r
     }
 }
 
+void checkVertikal(vector<vector<char>>board, vector<word>allw, int col, int row, int lword){
+    for(int i = 0; i < col; i ++){
+        for(int j = 0; j < row; j ++ ){
+            int ind = 0;
+            for(int k = 0; k < lword; k ++){
+                int lnt = allw[k].length;
+                if(lnt > row - j){
+                    break;
+                }
 
+                if(allw[k].cntnt[ind] == board[j][i] && !allw[k].done){
+                    bool same = true;
+                    for(int l = j + 1; l < j + allw[k].length; l ++){
+                        ind ++;
+                        if(allw[k].cntnt[ind] != board[l][i]){
+                            same = false;
+                            break;
+                        }
+                    }
+
+                    if(same){
+                        allw[k].done = true;
+                        cout << allw[k].cntnt << endl;
+                        printVertikal(i, j, lnt, row, col, board);
+                    }
+                }
+                ind = 0;
+                if(allw[k].cntnt[lnt - ind - 1] == board[j][i] && !allw[k].done){
+                    bool same = true;
+                    for(int l = j + 1; l < j + allw[k].length; l ++){
+                        ind ++;
+                        if(allw[k].cntnt[lnt - ind - 1] != board[l][i]){
+                            same = false;
+                            break;
+                        }
+                    }
+
+                    if(same) {
+                        allw[k].done = true;
+                        cout << allw[k].cntnt << endl;
+                        printVertikal(i, j, lnt, row, col, board);
+                    }
+                }
+            }
+        }
+    }    
+}
 
 
 int main(){
@@ -115,6 +173,7 @@ int main(){
     });
     
     checkHorizontal(board, allw, m, n, allw.size());
+    checkVertikal(board, allw, m, n, allw.size());
 
 
 
