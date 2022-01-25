@@ -23,7 +23,7 @@ extern int row, column, probnumb;
 
 //Function declaration
 
-//Function for input and processing input
+//Function for input
 void inputText();
 
 //Function for checking board;

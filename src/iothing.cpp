@@ -39,4 +39,64 @@ void inputText(){
     
 }
 
+void printHorizontal(int row, int col, int length, int sizer, int sizecol, vector<vector<char>>board){
+    for(int i = 0; i < sizer; i ++){
+        for(int j = 0; j < sizecol; j ++){
+            if(i == row && j >= col && j < col + length){
+                cout << board[i][j];
+            }
+            else{
+                cout << "-";
+            }
 
+            cout << " \n"[j == sizecol-1];
+        }
+    }
+    cout << endl;
+}
+
+void printVertikal(int row, int col, int length, int sizer, int sizecol, vector<vector<char>>board){
+    for(int i = 0; i < sizer; i ++){
+        for(int j = 0; j < sizecol; j ++){
+            if(j == col && i >= row && i < row + length ){
+                cout << board[i][j];
+            }else{
+                cout << "-";
+            }
+            cout << " \n"[j == sizecol - 1];
+        }
+    }
+    cout << endl;
+}
+
+void printDiagonalL(int row, int col, int sizer, int sizecol, vector<vector<char>>board){
+    for(int i = 0; i < sizer; i ++){
+        for(int j = 0; j < sizecol; j ++){
+            if(i == row && j == col){
+                cout << board[i][j];
+                col ++;
+                row ++;
+            }else{
+                cout << "-";
+            }
+            cout << " \n"[j == sizecol - 1];
+        }
+    }
+    cout << endl;
+}
+
+void printDiagonalR(int row, int col, int sizer, int sizecol, vector<vector<char>>board){
+    for(int i = 0; i < sizer; i ++){
+        for(int j = 0; j < sizecol; j ++){
+            if(i == row && j == col){
+                cout << board[i][j];
+                col --;
+                row ++;
+            }else{
+                cout << "-";
+            }
+            cout << " \n"[j == sizecol - 1];
+        }
+    }
+    cout << endl;
+}
