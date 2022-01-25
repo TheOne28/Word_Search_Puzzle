@@ -1,46 +1,46 @@
 #include "main_header.hpp"
 
-void checkHorizontal(vector<vector<char>>board, vector<word>allw, int col, int row, int lword){
+void checkHorizontal(){
     for(int i = 0; i < row; i ++){
-        for(int j = 0; j < col; j ++ ){
-            for(int k = 0; k < lword; k ++){
+        for(int j = 0; j < column; j ++ ){
+            for(int k = 0; k < probnumb; k ++){
                 int ind = 0;
-                int lnt = allw[k].length;
-                if(lnt > col - j){
+                int lnt = problem[k].length;
+                if(lnt > column - j){
                     break;
                 }
 
-                if(allw[k].content[ind] == board[i][j] && !allw[k].done){
+                if(problem[k].content[ind] == board[i][j] && !problem[k].done){
                     bool same = true;
-                    for(int l = j + 1; l < j + allw[k].length; l ++){
+                    for(int l = j + 1; l < j + problem[k].length; l ++){
                         ind ++;
-                        if(allw[k].content[ind] != board[i][l]){
+                        if(problem[k].content[ind] != board[i][l]){
                             same = false;
                             break;
                         }
                     }
 
                     if(same){
-                        allw[k].done = true;
-                        cout << allw[k].content << endl;
-                        printHorizontal(i, j, lnt, row, col, board);
+                        problem[k].done = true;
+                        cout << problem[k].content << endl;
+                        printHorizontal(i, j, lnt);
                     }
                 }
                 ind = 0;
-                if(allw[k].content[lnt - ind - 1] == board[i][j] && !allw[k].done){
+                if(problem[k].content[lnt - ind - 1] == board[i][j] && !problem[k].done){
                     bool same = true;
-                    for(int l = j + 1; l < j + allw[k].length; l ++){
+                    for(int l = j + 1; l < j + problem[k].length; l ++){
                         ind ++;
-                        if(allw[k].content[lnt - ind - 1] != board[i][l]){
+                        if(problem[k].content[lnt - ind - 1] != board[i][l]){
                             same = false;
                             break;
                         }
                     }
 
                     if(same) {
-                        allw[k].done = true;
-                        cout << allw[k].content << endl;
-                        printHorizontal(i, j, lnt, row, col, board);
+                        problem[k].done = true;
+                        cout << problem[k].content << endl;
+                        printHorizontal(i, j, lnt);
                     }
                 }
             }
@@ -48,47 +48,47 @@ void checkHorizontal(vector<vector<char>>board, vector<word>allw, int col, int r
     }
 }
 
-void checkVertikal(vector<vector<char>>board, vector<word>allw, int col, int row, int lword){
-    for(int i = 0; i < col; i ++){
+void checkVertikal(){
+    for(int i = 0; i < column; i ++){
         for(int j = 0; j < row; j ++ ){
-            for(int k = 0; k < lword; k ++){
+            for(int k = 0; k < probnumb; k ++){
                 int ind = 0;
-                int lnt = allw[k].length;
+                int lnt = problem[k].length;
                 if(lnt > row - j){
                     break;
                 }
 
-                if(allw[k].content[ind] == board[j][i] && !allw[k].done){
+                if(problem[k].content[ind] == board[j][i] && !problem[k].done){
                     bool same = true;
-                    for(int l = j + 1; l < j + allw[k].length; l ++){
+                    for(int l = j + 1; l < j + problem[k].length; l ++){
                         ind ++;
-                        if(allw[k].content[ind] != board[l][i]){
+                        if(problem[k].content[ind] != board[l][i]){
                             same = false;
                             break;
                         }
                     }
 
                     if(same){
-                        allw[k].done = true;
-                        cout << allw[k].content << endl;
-                        printVertikal(j, i, lnt, row, col, board);
+                        problem[k].done = true;
+                        cout << problem[k].content << endl;
+                        printVertikal(j, i, lnt);
                     }
                 }
                 ind = 0;
-                if(allw[k].content[lnt - ind - 1] == board[j][i] && !allw[k].done){
+                if(problem[k].content[lnt - ind - 1] == board[j][i] && !problem[k].done){
                     bool same = true;
-                    for(int l = j + 1; l < j + allw[k].length; l ++){
+                    for(int l = j + 1; l < j + problem[k].length; l ++){
                         ind ++;
-                        if(allw[k].content[lnt - ind - 1] != board[l][i]){
+                        if(problem[k].content[lnt - ind - 1] != board[l][i]){
                             same = false;
                             break;
                         }
                     }
 
                     if(same) {
-                        allw[k].done = true;
-                        cout << allw[k].content << endl;
-                        printVertikal(j, i, lnt, row, col, board);
+                        problem[k].done = true;
+                        cout << problem[k].content << endl;
+                        printVertikal(j, i, lnt);
                     }
                 }
             }
@@ -96,18 +96,18 @@ void checkVertikal(vector<vector<char>>board, vector<word>allw, int col, int row
     }    
 }
 
-void checkDiagonalL(vector<vector<char>>board, vector<word>allw, int col, int row, int lword){
+void checkDiagonalL(){
     for(int i = 0; i < row; i ++){
-        for(int j = 0; j < col; j ++){
-            for(int k = 0; k < lword; k ++){
+        for(int j = 0; j < column; j ++){
+            for(int k = 0; k < probnumb; k ++){
                 int ind = 0;
-                int lnt = allw[k].length;
+                int lnt = problem[k].length;
                 
-                if(allw[k].content[ind] == board[i][j] && !allw[k].done){
+                if(problem[k].content[ind] == board[i][j] && !problem[k].done){
                     bool same = true;
-                    for(int l = i + 1, z = j + 1; l < row && z < col;){
+                    for(int l = i + 1, z = j + 1; l < row && z < column;){
                         ind ++;
-                        if(allw[k].content[ind] != board[l][z]){
+                        if(problem[k].content[ind] != board[l][z]){
                             same = false;
                             break;
                         }
@@ -119,17 +119,17 @@ void checkDiagonalL(vector<vector<char>>board, vector<word>allw, int col, int ro
                         same = false;
                     }
                     if(same){
-                        allw[k].done = true;
-                        cout << allw[k].content << endl;
-                        printDiagonalL(i, j, row, col, board );
+                        problem[k].done = true;
+                        cout << problem[k].content << endl;
+                        printDiagonalL(i, j);
                     }
                 }
                 ind  = 0;
-                if(allw[k].content[lnt-ind-1] == board[i][j] && !allw[k].done){
+                if(problem[k].content[lnt-ind-1] == board[i][j] && !problem[k].done){
                     bool same = true;
-                    for(int l = i + 1, z = j + 1; l < row && z < col;){
+                    for(int l = i + 1, z = j + 1; l < row && z < column;){
                         ind ++;
-                        if(allw[k].content[lnt-ind-1] != board[l][z]){
+                        if(problem[k].content[lnt-ind-1] != board[l][z]){
                             same = false;
                             break;
                         }
@@ -141,9 +141,9 @@ void checkDiagonalL(vector<vector<char>>board, vector<word>allw, int col, int ro
                     }
 
                     if(same){
-                        allw[k].done = true;
-                        cout << allw[k].content << endl;
-                        printDiagonalL(i, j, row, col, board);
+                        problem[k].done = true;
+                        cout << problem[k].content << endl;
+                        printDiagonalL(i, j);
                     }
                 }
             }
@@ -151,18 +151,18 @@ void checkDiagonalL(vector<vector<char>>board, vector<word>allw, int col, int ro
     }
 }
 
-void checkDiagonalR(vector<vector<char>>board, vector<word>allw, int col, int row, int lword){
+void checkDiagonalR(){
     for(int i = 0; i < row; i ++){
-        for(int j = col - 1; j >= 0; j --){
-            for(int k = 0; k < lword; k ++){
+        for(int j = column - 1; j >= 0; j --){
+            for(int k = 0; k < probnumb; k ++){
                 int ind = 0;
-                int lnt = allw[k].length;
+                int lnt = problem[k].length;
                 
-                if(allw[k].content[ind] == board[i][j] && !allw[k].done){
+                if(problem[k].content[ind] == board[i][j] && !problem[k].done){
                     bool same = true;
                     for(int l = i + 1, z = j - 1; l < row && z >= 0;){
                         ind ++;
-                        if(allw[k].content[ind] != board[l][z]){
+                        if(problem[k].content[ind] != board[l][z]){
                             same = false;
                             break;
                         }
@@ -174,17 +174,17 @@ void checkDiagonalR(vector<vector<char>>board, vector<word>allw, int col, int ro
                         same = false;
                     }
                     if(same){
-                        allw[k].done = true;
-                        cout << allw[k].content << endl;
-                        printDiagonalR(i, j, row, col, board );
+                        problem[k].done = true;
+                        cout << problem[k].content << endl;
+                        printDiagonalR(i, j);
                     }
                 }
                 ind  = 0;
-                if(allw[k].content[lnt-ind-1] == board[i][j] && !allw[k].done){
+                if(problem[k].content[lnt-ind-1] == board[i][j] && !problem[k].done){
                     bool same = true;
                     for(int l = i + 1, z = j - 1; l < row && z >= 0;){
                         ind ++;
-                        if(allw[k].content[lnt-ind-1] != board[l][z]){
+                        if(problem[k].content[lnt-ind-1] != board[l][z]){
                             same = false;
                             break;
                         }
@@ -197,9 +197,9 @@ void checkDiagonalR(vector<vector<char>>board, vector<word>allw, int col, int ro
                     }
 
                     if(same){
-                        allw[k].done = true;
-                        cout << allw[k].content << endl;
-                        printDiagonalR(i, j, row, col, board);
+                        problem[k].done = true;
+                        cout << problem[k].content << endl;
+                        printDiagonalR(i, j);
                     }
                 }
             }

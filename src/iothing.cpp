@@ -39,63 +39,63 @@ void inputText(){
     
 }
 
-void printHorizontal(int row, int col, int length, int sizer, int sizecol, vector<vector<char>>board){
-    for(int i = 0; i < sizer; i ++){
-        for(int j = 0; j < sizecol; j ++){
-            if(i == row && j >= col && j < col + length){
+void printHorizontal(int solrow, int solcolumn, int length){
+    for(int i = 0; i < row; i ++){
+        for(int j = 0; j < column; j ++){
+            if(i == solrow && j >= solcolumn && j < solcolumn + length){
                 cout << board[i][j];
             }
             else{
                 cout << "-";
             }
 
-            cout << " \n"[j == sizecol-1];
+            cout << " \n"[j == column-1];
         }
     }
     cout << endl;
 }
 
-void printVertikal(int row, int col, int length, int sizer, int sizecol, vector<vector<char>>board){
-    for(int i = 0; i < sizer; i ++){
-        for(int j = 0; j < sizecol; j ++){
-            if(j == col && i >= row && i < row + length ){
+void printVertikal(int solrow, int solcolumn, int length){
+    for(int i = 0; i < row; i ++){
+        for(int j = 0; j < column; j ++){
+            if(j == solcolumn && i >= solrow && i < solrow + length ){
                 cout << board[i][j];
             }else{
                 cout << "-";
             }
-            cout << " \n"[j == sizecol - 1];
+            cout << " \n"[j == column - 1];
         }
     }
     cout << endl;
 }
 
-void printDiagonalL(int row, int col, int sizer, int sizecol, vector<vector<char>>board){
-    for(int i = 0; i < sizer; i ++){
-        for(int j = 0; j < sizecol; j ++){
-            if(i == row && j == col){
+void printDiagonalL(int solrow, int solcolumn){
+    for(int i = 0; i < row; i ++){
+        for(int j = 0; j < column; j ++){
+            if(i == solrow && j == solcolumn){
                 cout << board[i][j];
-                col ++;
-                row ++;
+                solcolumn ++;
+                solrow ++;
             }else{
                 cout << "-";
             }
-            cout << " \n"[j == sizecol - 1];
+            cout << " \n"[j == column - 1];
         }
     }
     cout << endl;
 }
 
-void printDiagonalR(int row, int col, int sizer, int sizecol, vector<vector<char>>board){
-    for(int i = 0; i < sizer; i ++){
-        for(int j = 0; j < sizecol; j ++){
-            if(i == row && j == col){
+void printDiagonalR(int solrow, int solcolumn){
+    for(int i = 0; i < row; i ++){
+        for(int j = 0; j < column; j ++){
+            if(i == solrow && j == solcolumn){
                 cout << board[i][j];
-                col --;
-                row ++;
+                solcolumn --;
+                solrow ++;
             }else{
                 cout << "-";
             }
-            cout << " \n"[j == sizecol - 1];
+            cout << " \n"[j == column - 1];
         }
     }
     cout << endl;

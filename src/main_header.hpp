@@ -29,22 +29,16 @@ void inputText();
 
 //Function for checking board;
 
-void checkHorizontal(vector<vector<char>>board, vector<word>allw, int col, int row, int lword);
-void checkVertikal(vector<vector<char>>board, vector<word>allw, int col, int row, int lword);
-void checkDiagonalL(vector<vector<char>>board, vector<word>allw, int col, int row, int lword);
-void checkDiagonalR(vector<vector<char>>board, vector<word>allw, int col, int row, int lword);
+void checkHorizontal();
+void checkVertikal();
+void checkDiagonalL();
+void checkDiagonalR();
 
 //Function for print solution
-void printHorizontal(int row, int col, int length, int sizer, int sizecol, vector<vector<char>>board);
-void printVertikal(int row, int col, int length, int sizer, int sizecol, vector<vector<char>>board);
-void printDiagonalL(int row, int col, int sizer, int sizecol, vector<vector<char>>board);
-void printDiagonalR(int row, int col, int sizer, int sizecol, vector<vector<char>>board);
-
-
-
-
-
-
+void printHorizontal(int row, int col, int length);
+void printVertikal(int row, int col, int length);
+void printDiagonalL(int row, int col);
+void printDiagonalR(int row, int col);
 
 
 
