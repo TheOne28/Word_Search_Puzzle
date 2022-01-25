@@ -21,6 +21,7 @@ void printHorizontal(int row, int col, int length, int sizer, int sizecol, vecto
             cout << " \n"[j == sizecol-1];
         }
     }
+    cout << endl;
 }
 
 void printVertikal(){
@@ -40,7 +41,8 @@ void checkHorizontal(vector<vector<char>>board, vector<word>allw, int col, int r
         for(int j = 0; j < col; j ++ ){
             int ind = 0;
             for(int k = 0; k < lword; k ++){
-                if(allw[k].length > col - j){
+                int lnt = allw[k].length;
+                if(lnt > col - j){
                     break;
                 }
 
@@ -56,7 +58,23 @@ void checkHorizontal(vector<vector<char>>board, vector<word>allw, int col, int r
 
                     if(same){
                         allw[k].done = true;
-                        printHorizontal(i, j, allw[k].length, row, col, board);
+                        cout << allw[k].cntnt << endl;
+                        printHorizontal(i, j, lnt, row, col, board);
+                    }
+                }else if(allw[k].cntnt[lnt - ind - 1] == board[i][j] && !allw[k].done){
+                    bool same = true;
+                    for(int l = j + 1; l < j + allw[k].length; l ++){
+                        ind ++;
+                        if(allw[k].cntnt[lnt - ind - 1] != board[i][l]){
+                            same = false;
+                            break;
+                        }
+                    }
+
+                    if(same) {
+                        allw[k].done = true;
+                        cout << allw[k].cntnt << endl;
+                        printHorizontal(i, j, lnt, row, col, board);
                     }
                 }
             }
@@ -101,3 +119,4 @@ int main(){
 
 
 }   
+
