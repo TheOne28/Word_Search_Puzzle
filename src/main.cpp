@@ -23,9 +23,10 @@ int  main(){
 
     auto end = high_resolution_clock::now();
     auto duration = duration_cast<milliseconds>(end - start);
-
+    
+    cout << "Ukuran Board: " << row << " x " << column << "\n"; 
     cout << "Total Perbandingan huruf: " << step << "\n";
-    cout << "Total Kata ditemukan: " << wordfound << "\n";
+    cout << "Total Kata ditemukan: " << wordfound << "/" << probnumb<< "\n";
     if(duration.count() < 1000){
         cout <<"Waktu yang dibutuhkan (millisecond): " << duration.count()<< "\n";
     }else if(duration.count() < 60000){
@@ -33,5 +34,6 @@ int  main(){
     }else{
         cout << "Waktu yang dibutuhkan (menit): " << duration.count()/60000 << "\n";
     }
+
     return 0;
 }

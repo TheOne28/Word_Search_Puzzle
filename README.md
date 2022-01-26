@@ -41,8 +41,8 @@ Berikut adalah langkah yang dapat diikuti untuk menggunakan program ini.
 
 1. Clone repository ini.
 2. Open terminal dan pindahkan working directory ke folder src.
-3. Isi puzzle yang ingin diselesaikan pada file input.txt di folder test.
-4. Jalankan command berikut untuk menjalankan program 
+3. Isi puzzle yang ingin diselesaikan pada file input.txt di folder test. Apabila ingin menggunakan testcase yang disediakan, silahkan copy file di directory test/testcase ke input.txt
+4. Jalankan command berikut untuk menjalankan program
 
 ```shell
 g++ algorithm.cpp iothing.cpp main.cpp main_header.hpp -o ../bin/main.exe
@@ -50,4 +50,4 @@ cd ../bin
 .\main.exe
 ```
 
-5. Tunggu hingga program berhasil menampilkan seluruh kata. 
+5. Tunggu hingga program berhasil menampilkan seluruh kata.
